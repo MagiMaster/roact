@@ -1202,8 +1202,9 @@
 <p class="admonition-title">Caution</p>
 <p>Make sure not to modify <code>props</code> or <code>children</code> after they're passed into <code>createElement</code>!</p>
 </div>
+<hr />
 <h3 id="roactcreatefragment">Roact.createFragment<a class="headerlink" href="#roactcreatefragment" title="Permanent link">&para;</a></h3>
-<p><span class="api-addition">Added in 1.0.0</span></p>
+<p><div class="api-addition">Added in 1.0.0</div></p>
 <div class="codehilite"><pre><span></span>Roact.createFragment(elements) -&gt; RoactFragment
 </pre></div>
 
@@ -1212,6 +1213,7 @@
 <p class="admonition-title">Caution</p>
 <p>Make sure not to modify <code>elements</code> after they're passed into <code>createFragment</code>!</p>
 </div>
+<hr />
 <h3 id="roactmount">Roact.mount<a class="headerlink" href="#roactmount" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>Roact.mount(element, [parent, [key]]) -&gt; ComponentInstanceHandle
 </pre></div>
@@ -1222,6 +1224,7 @@
 </div>
 <p>Creates a Roblox Instance given a Roact element, and optionally a <code>parent</code> to put it in, and a <code>key</code> to use as the instance's <code>Name</code>.</p>
 <p>The result is a <code>ComponentInstanceHandle</code>, which is an opaque handle that represents this specific instance of the root component. You can pass this to APIs like <code>Roact.unmount</code> and the future debug API.</p>
+<hr />
 <h3 id="roactupdate">Roact.update<a class="headerlink" href="#roactupdate" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>Roact.update(instanceHandle, element) -&gt; ComponentInstanceHandle
 </pre></div>
@@ -1237,6 +1240,7 @@
 <p><code>Roact.update</code> takes ownership of the <code>instanceHandle</code> passed into it and may unmount it and mount a new tree!</p>
 <p>Make sure to use the handle that <code>update</code> returns in any operations after <code>update</code>, including <code>unmount</code>.</p>
 </div>
+<hr />
 <h3 id="roactunmount">Roact.unmount<a class="headerlink" href="#roactunmount" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>Roact.unmount(instance) -&gt; void
 </pre></div>
@@ -1246,13 +1250,15 @@
 <p><code>Roact.unmount</code> is also available via the deprecated alias <code>Roact.teardown</code>. It will be removed in a future release.</p>
 </div>
 <p>Destroys the given <code>ComponentInstanceHandle</code> and all of its descendants. Does not operate on a Roblox Instance -- this must be given a handle that was returned by <code>Roact.mount</code>.</p>
+<hr />
 <h3 id="roactonechild">Roact.oneChild<a class="headerlink" href="#roactonechild" title="Permanent link">&para;</a></h3>
 <p><code>Roact.oneChild(children) -&gt; RoactElement | nil</code></p>
 <p>Given a dictionary of children, returns a single child element.</p>
 <p>If <code>children</code> contains more than one child, <code>oneChild</code> function will throw an error. This is intended to denote an error when using the component using <code>oneChild</code>.</p>
 <p>If <code>children</code> is <code>nil</code> or contains no children, <code>oneChild</code> will return <code>nil</code>.</p>
+<hr />
 <h3 id="roactcreatebinding">Roact.createBinding<a class="headerlink" href="#roactcreatebinding" title="Permanent link">&para;</a></h3>
-<p><span class="api-addition">Added in 1.0.0</span></p>
+<p><div class="api-addition">Added in 1.0.0</div></p>
 <div class="codehilite"><pre><span></span>Roact.createBinding(initialValue) -&gt; Binding, updateFunction
 where
     updateFunction: (newValue) -&gt; ()
@@ -1276,11 +1282,13 @@ where
 </pre></div>
 
 <p>Returns a new binding that maps the existing binding's value to something else. For example, <code>map</code> can be used to transform an animation progress value like <code>0.4</code> into a property that can be consumed by a Roblox Instance like <code>UDim2.new(0.4, 0, 1, 0)</code>.</p>
+<hr />
 <h3 id="roactcreateref">Roact.createRef<a class="headerlink" href="#roactcreateref" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>Roact.createRef() -&gt; Ref
 </pre></div>
 
 <p>Creates a new reference object that can be used with <a href="#roactref">Roact.Ref</a>.</p>
+<hr />
 <h3 id="roactsetglobalconfig">Roact.setGlobalConfig<a class="headerlink" href="#roactsetglobalconfig" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>Roact.setGlobalConfig(configValues: Dictionary&lt;string, bool&gt;) -&gt; void
 </pre></div>
@@ -1309,10 +1317,12 @@ where
 <p>Enabling <code>elementTracing</code> also allows the use of the <a href="#getelementtraceback">getElementTraceback</a> method on Component, which can also be helpful for debugging.</p>
 <h4 id="propvalidation">propValidation<a class="headerlink" href="#propvalidation" title="Permanent link">&para;</a></h4>
 <p>Enables validation of props via the <a href="#validateprops">validateProps</a> method on components. With this flag enabled, any validation written by component authors in a component's <code>validateProps</code> method will be run on every prop change. This is helpful during development for making sure components are being used correctly.</p>
+<hr />
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <h3 id="roactchildren">Roact.Children<a class="headerlink" href="#roactchildren" title="Permanent link">&para;</a></h3>
 <p>This is the key that Roact uses internally to store the children that are attached to a Roact element.</p>
 <p>If you're writing a new function component or stateful component that renders children like a host component, you can access <code>Roact.Children</code> in your props table.</p>
+<hr />
 <h3 id="roactref">Roact.Ref<a class="headerlink" href="#roactref" title="Permanent link">&para;</a></h3>
 <p>Use <code>Roact.Ref</code> as a key into the props of a host element to receive a handle to the underlying Roblox Instance.</p>
 <p>Assign this key to a ref created with <a href="#roactcreateref">createRef</a>:
@@ -1356,6 +1366,7 @@ where
 <p>When <code>Roact.Ref</code> is given a function, it will be called with <code>nil</code> when the component instance is destroyed!</p>
 </div>
 <p>See <a href="../advanced/bindings-and-refs#refs">the refs guide</a> for more details.</p>
+<hr />
 <h3 id="roactevent">Roact.Event<a class="headerlink" href="#roactevent" title="Permanent link">&para;</a></h3>
 <p>Index into <code>Roact.Event</code> to receive a key that can be used to connect to events when creating host elements:</p>
 <div class="codehilite"><pre><span></span><span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;ImageButton&quot;</span><span class="p">,</span> <span class="p">{</span>
@@ -1374,6 +1385,7 @@ where
 <p>When connecting to the <code>Changed</code> event, be careful not to call <code>setState</code> or other functions that will trigger renders. This will cause Roact to re-render during a render, and errors will be thrown!</p>
 </div>
 <p>See <a href="../guide/events">the events guide</a> for more details.</p>
+<hr />
 <h3 id="roactchange">Roact.Change<a class="headerlink" href="#roactchange" title="Permanent link">&para;</a></h3>
 <p>Index into <code>Roact.Change</code> to receive a key that can be used to connect to <a href="http://wiki.roblox.com/index.php?title=API:Class/Instance/GetPropertyChangedSignal"><code>GetPropertyChangedSignal</code></a> events.</p>
 <p>It's similar to <code>Roact.Event</code>:</p>
@@ -1388,6 +1400,7 @@ where
 <p class="admonition-title">Warning</p>
 <p>Property changed events are fired by Roact during the reconciliation phase. Be careful not to accidentally trigger a re-render in the middle of a re-render, or an error will be thrown!</p>
 </div>
+<hr />
 <h3 id="roactnone">Roact.None<a class="headerlink" href="#roactnone" title="Permanent link">&para;</a></h3>
 <p><code>Roact.None</code> is a special value that can be used to clear elements from your component state when calling <code>setState</code> or returning from <code>getDerivedStateFromProps</code>.</p>
 <p>In Lua tables, removing a field from state is not possible by setting its value to <code>nil</code> because <code>nil</code> values mean the same thing as no value at all. If a field needs to be removed from state, it can be set to <code>Roact.None</code> when calling <code>setState</code>, which will ensure that the resulting state no longer contains it:</p>
@@ -1398,25 +1411,30 @@ where
 <span class="kr">end</span>
 </pre></div>
 
+<hr />
 <h2 id="component-types">Component Types<a class="headerlink" href="#component-types" title="Permanent link">&para;</a></h2>
 <h3 id="roactcomponent">Roact.Component<a class="headerlink" href="#roactcomponent" title="Permanent link">&para;</a></h3>
 <p>The base component instance that can be extended to make stateful components.</p>
 <p>Call <code>Roact.Component:extend("ComponentName")</code> to make a new stateful component with a given name.</p>
+<hr />
 <h3 id="roactpurecomponent">Roact.PureComponent<a class="headerlink" href="#roactpurecomponent" title="Permanent link">&para;</a></h3>
 <p>An extension of <code>Roact.Component</code> that only re-renders if its props or state change.</p>
 <p><code>PureComponent</code> implements the <code>shouldUpdate</code> lifecycle event with a shallow equality comparison. It's optimized for use with immutable data structures, which makes it a perfect fit for use with frameworks like Rodux.</p>
 <p><code>PureComponent</code> is not <em>always</em> faster, but can often result in significant performance improvements when used correctly.</p>
+<hr />
 <h3 id="roactportal">Roact.Portal<a class="headerlink" href="#roactportal" title="Permanent link">&para;</a></h3>
 <p>A component that represents a <em>portal</em> to a Roblox Instance. Portals are created using <code>Roact.createElement</code>.</p>
 <p>Any children of a portal are put inside the Roblox Instance specified by the required <code>target</code> prop. That Roblox Instance should not be one created by Roact.</p>
 <p>Portals are useful for creating dialogs managed by deeply-nested UI components, and enable Roact to represent and manage multiple disjoint trees at once.</p>
 <p>See <a href="../advanced/portals">the Portals guide</a> for a small tutorial and more details about portals.</p>
+<hr />
 <h2 id="component-api">Component API<a class="headerlink" href="#component-api" title="Permanent link">&para;</a></h2>
 <h3 id="defaultprops">defaultProps<a class="headerlink" href="#defaultprops" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>static defaultProps: Dictionary&lt;any, any&gt;
 </pre></div>
 
 <p>If <code>defaultProps</code> is defined on a stateful component, any props that aren't specified when a component is created will be taken from there.</p>
+<hr />
 <h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>init(initialProps) -&gt; void
 </pre></div>
@@ -1440,6 +1458,7 @@ where
 <span class="kr">end</span>
 </pre></div>
 
+<hr />
 <h3 id="render">render<a class="headerlink" href="#render" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>render() -&gt; Element | nil
 </pre></div>
@@ -1470,6 +1489,7 @@ where
 <span class="kr">end</span>
 </pre></div>
 
+<hr />
 <h3 id="setstate">setState<a class="headerlink" href="#setstate" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>setState(stateUpdater | stateChange) -&gt; void
 </pre></div>
@@ -1515,6 +1535,7 @@ where
 <li><a href="https://stackoverflow.com/a/48610973/802794">Does React keep the order for state updates?</a></li>
 </ul>
 </div>
+<hr />
 <h3 id="shouldupdate">shouldUpdate<a class="headerlink" href="#shouldupdate" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>shouldUpdate(nextProps, nextState) -&gt; bool
 </pre></div>
@@ -1522,8 +1543,9 @@ where
 <p><code>shouldUpdate</code> provides a way to override Roact's rerendering heuristics.</p>
 <p>By default, components are re-rendered any time a parent component updates, or when state is updated via <code>setState</code>.</p>
 <p><code>PureComponent</code> implements <code>shouldUpdate</code> to only trigger a re-render any time the props are different based on shallow equality. In a future Roact update, <em>all</em> components may implement this check by default.</p>
+<hr />
 <h3 id="validateprops">validateProps<a class="headerlink" href="#validateprops" title="Permanent link">&para;</a></h3>
-<p><span class="api-addition">Added in 1.0.0</span></p>
+<p><div class="api-addition">Added in 1.0.0</div></p>
 <div class="codehilite"><pre><span></span>static validateProps(props) -&gt; (false, message: string) | true
 </pre></div>
 
@@ -1540,6 +1562,7 @@ where
 <p class="admonition-title">Warning</p>
 <p>Depending on the implementation, <code>validateProps</code> can impact performance. Recommended practice is to enable prop validation during development and leave it off in production environments.</p>
 </div>
+<hr />
 <h3 id="getelementtraceback">getElementTraceback<a class="headerlink" href="#getelementtraceback" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>getElementTraceback() -&gt; string | nil
 </pre></div>
@@ -1559,23 +1582,27 @@ where
 
 <p><code>didMount</code> is fired after the component finishes its initial render. At this point, all associated Roblox Instances have been created, and all components have finished mounting.</p>
 <p><code>didMount</code> is a good place to start initial network communications, attach events to services, or modify the Roblox Instance hierarchy.</p>
+<hr />
 <h3 id="willunmount">willUnmount<a class="headerlink" href="#willunmount" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>willUnmount() -&gt; void
 </pre></div>
 
 <p><code>willUnmount</code> is fired right before Roact begins unmounting a component instance's children.</p>
 <p><code>willUnmount</code> acts like a component's destructor, and is a good place to disconnect any manually-connected events.</p>
+<hr />
 <h3 id="willupdate">willUpdate<a class="headerlink" href="#willupdate" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>willUpdate(nextProps, nextState) -&gt; void
 </pre></div>
 
 <p><code>willUpdate</code> is fired after an update is started but before a component's state and props are updated.</p>
+<hr />
 <h3 id="didupdate">didUpdate<a class="headerlink" href="#didupdate" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>didUpdate(previousProps, previousState) -&gt; void
 </pre></div>
 
 <p><code>didUpdate</code> is fired after at the end of an update. At this point, Roact has updated the properties of any Roblox Instances and the component instance's props and state are up to date.</p>
 <p><code>didUpdate</code> is a good place to send network requests or dispatch Rodux actions, but make sure to compare <code>self.props</code> and <code>self.state</code> with <code>previousProps</code> and <code>previousState</code> to avoid triggering too many updates.</p>
+<hr />
 <h3 id="getderivedstatefromprops">getDerivedStateFromProps<a class="headerlink" href="#getderivedstatefromprops" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>static getDerivedStateFromProps(nextProps, lastState) -&gt; nextStateSlice
 </pre></div>
