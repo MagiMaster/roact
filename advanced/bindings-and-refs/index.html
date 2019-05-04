@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://roblox.github.io/roact/advanced/refs/">
+        <link rel="canonical" href="https://roblox.github.io/roact/advanced/bindings-and-refs/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Refs - Roact Documentation</title>
+        <title>Bindings and Refs - Roact Documentation</title>
       
     
     
@@ -101,7 +101,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#refs-in-action" tabindex="1" class="md-skip">
+      <a href="#bindings" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -127,7 +127,7 @@
                 Roact Documentation
               </span>
               <span class="md-header-nav__topic">
-                Refs
+                Bindings and Refs
               </span>
             
           
@@ -373,6 +373,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../fragments/" title="Fragments" class="md-nav__link">
+      Fragments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../portals/" title="Portals" class="md-nav__link">
       Portals
     </a>
@@ -392,11 +404,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Refs
+        Bindings and Refs
       </label>
     
-    <a href="./" title="Refs" class="md-nav__link md-nav__link--active">
-      Refs
+    <a href="./" title="Bindings and Refs" class="md-nav__link md-nav__link--active">
+      Bindings and Refs
     </a>
     
       
@@ -408,16 +420,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bindings" title="Bindings" class="md-nav__link">
+    Bindings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binding-properties" title="Binding Properties" class="md-nav__link">
+    Binding Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapped-bindings" title="Mapped Bindings" class="md-nav__link">
+    Mapped Bindings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refs" title="Refs" class="md-nav__link">
+    Refs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#refs-in-action" title="Refs in Action" class="md-nav__link">
     Refs in Action
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#refs-as-host-properties" title="Refs as Host Properties" class="md-nav__link">
+    Refs as Host Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-refs" title="Function Refs" class="md-nav__link">
     Function Refs
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -528,16 +587,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bindings" title="Bindings" class="md-nav__link">
+    Bindings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binding-properties" title="Binding Properties" class="md-nav__link">
+    Binding Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapped-bindings" title="Mapped Bindings" class="md-nav__link">
+    Mapped Bindings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refs" title="Refs" class="md-nav__link">
+    Refs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#refs-in-action" title="Refs in Action" class="md-nav__link">
     Refs in Action
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#refs-as-host-properties" title="Refs as Host Properties" class="md-nav__link">
+    Refs as Host Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-refs" title="Function Refs" class="md-nav__link">
     Function Refs
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -557,20 +663,71 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Roblox/roact/edit/master/docs/advanced/refs.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/Roblox/roact/edit/master/docs/advanced/bindings-and-refs.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Refs</h1>
+                  <h1>Bindings and Refs</h1>
                 
-                <p><em>Refs</em> grant access to the Roblox Instance objects that are created by Roact. They're an escape hatch for when something is difficult or impossible to correctly express with the Roact API.</p>
-<p>Refs are intended to be used in cases where Roact cannot solve a problem directly, or its solution might not be performant enough, like:</p>
+                <p>In certain situations, Roact's reconciliation process is ill-suited for managing some Instance properties. For cases like this, Roact provides escape hatches in the form of Bindings and Refs.</p>
+<p>Bindings and Refs are intended to be used in cases where Roact cannot solve a problem directly, or its solution might not be performant enough, like:</p>
 <ul>
-<li>Resizing a box to fit its contents dynamically</li>
+<li>Invoking functions on Roblox Instances</li>
+<li>Dynamically resizing a host component to fit its contents</li>
 <li>Gamepad selection</li>
 <li>Animations</li>
 </ul>
-<p>Refs can only be attached to primitive components. This is different than React, where refs can be used to call members of composite components.</p>
-<h2 id="refs-in-action">Refs in Action<a class="headerlink" href="#refs-in-action" title="Permanent link">&para;</a></h2>
+<h2 id="bindings">Bindings<a class="headerlink" href="#bindings" title="Permanent link">&para;</a></h2>
+<p>Bindings are special objects that Roact automatically unwraps into values. When a binding is updated, Roact will change only the specific properties that are subscribed to it.</p>
+<h3 id="binding-properties">Binding Properties<a class="headerlink" href="#binding-properties" title="Permanent link">&para;</a></h3>
+<p>Bindings can be used to provide an external source for a prop value, or to update those values outside of the Roact reconciliation process.</p>
+<p>First, create a binding and an updater using <code>Roact.createBinding()</code> and put the results somewhere persistent. <code>createBinding</code> returns two results: a binding object and an updater function, which is used to update the binding's value.</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="n">Foo</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">Component</span><span class="p">:</span><span class="n">extend</span><span class="p">(</span><span class="s2">&quot;Foo&quot;</span><span class="p">)</span>
+
+<span class="kr">function</span> <span class="nc">Foo</span><span class="p">:</span><span class="nf">init</span><span class="p">()</span>
+    <span class="c1">-- createBinding takes an initial value; for our purposes, 0 is fine</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">clickCount</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">updateClickCount</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createBinding</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+
+<p>Then, connect the binding value to something that we're rendering and the updater to something that will invoke it.</p>
+<div class="codehilite"><pre><span></span><span class="kr">function</span> <span class="nc">Foo</span><span class="p">:</span><span class="nf">render</span><span class="p">()</span>
+    <span class="kr">return</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;TextButton&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="c1">-- Roact unwraps the binding, sets the Text property to the binding&#39;s value,</span>
+        <span class="c1">-- and subscribes to the binding</span>
+        <span class="n">Text</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">clickCount</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">Roact</span><span class="p">.</span><span class="n">Event</span><span class="p">.</span><span class="n">Activated</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+            <span class="c1">-- When the user clicks the button, the count will be incremented and</span>
+            <span class="c1">-- Roact will update any properties that are subscribed to the binding</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">updateClickCount</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">clickCount</span><span class="p">:</span><span class="n">getValue</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="kr">end</span>
+    <span class="p">})</span>
+<span class="kr">end</span>
+</pre></div>
+
+<p>The result of this example is a <code>TextButton</code> that displays the number of times it's been clicked. In this case, we connect the updater to the button's <code>Activated</code> event. Other use cases could be connecting it to some external property in <code>didMount</code> or passing it to a child component as a callback.</p>
+<h3 id="mapped-bindings">Mapped Bindings<a class="headerlink" href="#mapped-bindings" title="Permanent link">&para;</a></h3>
+<p>Often, a binding's value isn't useful by itself. It needs to be transformed into some other value in order to be useful when assigned to an Instance property.</p>
+<p>Let's modify the above component to make use of a mapped binding:</p>
+<div class="codehilite"><pre><span></span><span class="kr">function</span> <span class="nc">Foo</span><span class="p">:</span><span class="nf">render</span><span class="p">()</span>
+    <span class="kr">return</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;TextButton&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="hll">        <span class="c1">-- Roact will receive the mapped value from the binding</span>
+</span><span class="hll">        <span class="n">Text</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">clickCount</span><span class="p">:</span><span class="n">map</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class="hll">            <span class="kr">return</span> <span class="s2">&quot;Clicks: &quot;</span> <span class="o">..</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class="hll">        <span class="kr">end</span><span class="p">),</span>
+</span>        <span class="p">[</span><span class="n">Roact</span><span class="p">.</span><span class="n">Event</span><span class="p">.</span><span class="n">Activated</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+            <span class="c1">-- When the user clicks the button, the count will be incremented</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">updateClickCount</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">clickCount</span><span class="p">:</span><span class="n">getValue</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="kr">end</span>
+    <span class="p">})</span>
+<span class="kr">end</span>
+</pre></div>
+
+<p>Our mapped binding transforms the number of clicks into a string. Now the <code>TextButton</code> will display "Clicks: 0" instead of just the number!</p>
+<h2 id="refs">Refs<a class="headerlink" href="#refs" title="Permanent link">&para;</a></h2>
+<p>While bindings are most helpful for individual props, we often want to access an entire Roblox Instance and its methods.</p>
+<p><em>Refs</em> are a special type of binding that point to Roblox Instance objects that are created by Roact.</p>
+<p>Refs can only be attached to host components. This is different from React, where refs can be used to call members of composite components.</p>
+<h3 id="refs-in-action">Refs in Action<a class="headerlink" href="#refs-in-action" title="Permanent link">&para;</a></h3>
 <p>To use a ref, call <code>Roact.createRef()</code> and put the result somewhere persistent. Generally, that means that refs are only used inside stateful components.</p>
 <div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="n">Foo</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">Component</span><span class="p">:</span><span class="n">extend</span><span class="p">(</span><span class="s2">&quot;Foo&quot;</span><span class="p">)</span>
 
@@ -579,7 +736,7 @@
 <span class="kr">end</span>
 </pre></div>
 
-<p>Next, use the ref inside of <code>render</code> by creating a primitive component. Refs use the special key <code>Roact.Ref</code>.</p>
+<p>Next, use the ref inside of <code>render</code> by creating a host component. Refs use the special key <code>Roact.Ref</code>.</p>
 <div class="codehilite"><pre><span></span><span class="kr">function</span> <span class="nc">Foo</span><span class="p">:</span><span class="nf">render</span><span class="p">()</span>
     <span class="kr">return</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;TextBox&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="p">[</span><span class="n">Roact</span><span class="p">.</span><span class="n">Ref</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">textBoxRef</span><span class="p">,</span>
@@ -589,17 +746,42 @@
 
 <p>Finally, we can use the value of the ref at any point after our component is mounted.</p>
 <div class="codehilite"><pre><span></span><span class="kr">function</span> <span class="nc">Foo</span><span class="p">:</span><span class="nf">didMount</span><span class="p">()</span>
-    <span class="c1">-- The actual Instance is stored in the &#39;current&#39; property of a ref object.</span>
-    <span class="kd">local</span> <span class="n">textBox</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">textBoxRef</span><span class="p">.</span><span class="n">current</span>
+    <span class="c1">-- The actual Instance can be retrieved using the `getValue` method</span>
+    <span class="kd">local</span> <span class="n">textBox</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">textBoxRef</span><span class="p">:</span><span class="n">getValue</span><span class="p">()</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TextBox has this text:&quot;</span><span class="p">,</span> <span class="n">textBox</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 
-<h2 id="function-refs">Function Refs<a class="headerlink" href="#function-refs" title="Permanent link">&para;</a></h2>
-<p>The original ref API was based on functions instead of objects. Its use is not recommended for most cases anymore, but it can still be useful in some cases.</p>
+<h3 id="refs-as-host-properties">Refs as Host Properties<a class="headerlink" href="#refs-as-host-properties" title="Permanent link">&para;</a></h3>
+<p>In addition to providing access to underlying Roblox objects, refs also provide a handy shortcut for Roblox Instance properties that expect another Instance as their value. One commonly-encountered example is <code>NextSelectionLeft</code> and its counterparts.</p>
+<p>Roact's Roblox renderer knows that bindings are not valid Roblox Instance values, so it will unwrap them for you:</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="n">Bar</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">Component</span><span class="p">:</span><span class="n">extend</span><span class="p">(</span><span class="s2">&quot;Bar&quot;</span><span class="p">)</span>
+
+<span class="kr">function</span> <span class="nc">Bar</span><span class="p">:</span><span class="nf">init</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">leftButtonRef</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createRef</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">rightButtonRef</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createRef</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nc">Bar</span><span class="p">:</span><span class="nf">render</span><span class="p">()</span>
+    <span class="kr">return</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;Frame&quot;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="p">{</span>
+        <span class="n">LeftButton</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;TextButton&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">Roact</span><span class="p">.</span><span class="n">Ref</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">leftButtonRef</span><span class="p">,</span>
+            <span class="n">NextSelectionRight</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">rightButtonRef</span><span class="p">,</span>
+        <span class="p">}),</span>
+        <span class="n">RightButton</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;TextButton&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">Roact</span><span class="p">.</span><span class="n">Ref</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">rightButtonRef</span><span class="p">,</span>
+            <span class="n">NextSelectionLeft</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">leftButtonRef</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="kr">end</span>
+</pre></div>
+
+<p>Since refs use bindings under the hood, they will be automatically updated whenever the ref changes. This means there's no need to worry about the order in which refs are assigned relative to when properties that use them get set.</p>
+<h3 id="function-refs">Function Refs<a class="headerlink" href="#function-refs" title="Permanent link">&para;</a></h3>
+<p>The original ref API was based on functions instead of objects (and does not use bindings). Its use is not recommended for most cases anymore.</p>
 <p>This style of ref involves passing a function as the <code>Roact.Ref</code> prop as opposed to a dedicated ref object:</p>
-<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">Bar</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">Baz</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
     <span class="kr">return</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;TextBox&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="p">[</span><span class="n">Roact</span><span class="p">.</span><span class="n">Ref</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
             <span class="c1">-- Be careful to guard against nil refs; this is a gotcha of</span>
@@ -614,6 +796,10 @@
 <span class="kr">end</span>
 </pre></div>
 
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Function refs, unlike bindings, <em>cannot</em> be used as properties for host components. This will result in an error. </p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>When a function ref is called, it's not guaranteed that its sibling or parent components have finished mounting. Causing side effects here can cause difficult-to-trace bugs.</p>

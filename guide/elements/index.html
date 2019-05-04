@@ -421,6 +421,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../advanced/fragments/" title="Fragments" class="md-nav__link">
+      Fragments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../advanced/portals/" title="Portals" class="md-nav__link">
       Portals
     </a>
@@ -433,8 +445,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced/refs/" title="Refs" class="md-nav__link">
-      Refs
+    <a href="../../advanced/bindings-and-refs/" title="Bindings and Refs" class="md-nav__link">
+      Bindings and Refs
     </a>
   </li>
 
@@ -578,7 +590,7 @@
                 
                 <p>Like React, everything in Roact is built out of elements. Elements are the smallest building blocks for creating UI.</p>
 <p>Elements describe what you want your UI to look like at a single point in time. They're <a href="https://en.wikipedia.org/wiki/Immutable_object">immutable</a>: you can't change elements once they're created, but you can create new ones. Because creating elements is fast, this is no big deal.</p>
-<p>You can create an element using <code>Roact.createElement</code> -- just pass a Roblox class name as the first argument, and any properties as the second argument!</p>
+<p>You can create an element using <code>Roact.createElement</code>. You will need to pass it a Roblox class name as the first argument (this is a kind of component, which we discuss in the <a href="../components">next section</a>), and any properties as the second argument!</p>
 <div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="n">myElement</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;Frame&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="n">Size</span> <span class="o">=</span> <span class="n">UDim2</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="p">})</span>
@@ -600,9 +612,9 @@
 </pre></div>
 
 <p>Mounting is the process of creating a Roact component instance as well as any associated Roblox Instances.</p>
-<p><code>Roact.mount</code> returns a handle that we can later use to update or destroy that object with <code>Roact.reconcile</code> and <code>Roact.unmount</code>.</p>
+<p><code>Roact.mount</code> returns a handle that we can later use to update or destroy that object with <code>Roact.update</code> and <code>Roact.unmount</code>.</p>
 <h2 id="changing-whats-rendered">Changing What's Rendered<a class="headerlink" href="#changing-whats-rendered" title="Permanent link">&para;</a></h2>
-<p>In order to change the UI that we've created, we need to create a new set of elements and <em>reconcile</em> the existing tree to match it.</p>
+<p>In order to change the UI that we've created, we need to create a new set of elements and <em>update</em> the existing tree to match it.</p>
 <p>Reconciliation is the term that Roact uses to describe the process of updating an existing UI to match what the program wants it to look like at any given time.</p>
 <p>Using <code>myHandle</code> from above, we can update the size and text of our label:</p>
 <div class="codehilite"><pre><span></span><span class="c1">-- Make some new elements that describe what our new UI will look like.</span>
@@ -615,13 +627,13 @@
 <span class="p">})</span>
 
 <span class="c1">-- Update our hierarchy to match those elements.</span>
-<span class="n">myHandle</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">reconcile</span><span class="p">(</span><span class="n">myHandle</span><span class="p">,</span> <span class="n">myNewElement</span><span class="p">)</span>
+<span class="n">myHandle</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">myHandle</span><span class="p">,</span> <span class="n">myNewElement</span><span class="p">)</span>
 </pre></div>
 
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Most projects using UI don't use <code>Roact.reconcile</code> and instead change UI using state and lifecycle events, which will be introduced in the next section.</p>
-<p><code>Roact.reconcile</code> is mostly useful to embed Roact components into existing, non-Roact projects, and for introducing Roact!</p>
+<p>Most projects using UI don't use <code>Roact.update</code> and instead change UI using state and lifecycle events, which will be introduced in the next section.</p>
+<p><code>Roact.update</code> is mostly useful to embed Roact components into existing, non-Roact projects, and for introducing Roact!</p>
 </div>
 <p>Unlike many other UI systems, Roact doesn't let you directly set values on UI objects. Instead, describe what your UI should look like in the form of elements and Roact will handle changing the underlying Roblox Instances.</p>
 <h2 id="unmounting-the-tree">Unmounting the Tree<a class="headerlink" href="#unmounting-the-tree" title="Permanent link">&para;</a></h2>
@@ -664,7 +676,7 @@
     <span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">currentTime</span> <span class="o">=</span> <span class="n">currentTime</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">handle</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">reconcile</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">clock</span><span class="p">(</span><span class="n">currentTime</span><span class="p">))</span>
+    <span class="n">handle</span> <span class="o">=</span> <span class="n">Roact</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">clock</span><span class="p">(</span><span class="n">currentTime</span><span class="p">))</span>
 <span class="kr">end</span>
 </pre></div>
 
